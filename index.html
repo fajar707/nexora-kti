@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora Digital | Premium Web Development Agency</title>
+    <meta name="description" content="Kami membantu bisnis membangun kehadiran digital melalui website modern, profesional, responsif, dan dirancang sesuai kebutuhan.">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#060B19', // Deep Black/Navy background
+                            800: '#0F172A', // Card background
+                            700: '#1E293B', // Border/Hover
+                        },
+                        accent: {
+                            500: '#00D2FF', // Electric Blue/Cyan
+                            600: '#0099FF',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for specific effects -->
+    <style>
+        body {
+            background-color: #060B19;
+            color: #F8FAFC;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism */
+        .glass-nav {
+            background: rgba(6, 11, 25, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 210, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0, 210, 255, 0.15);
+        }
+
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(135deg, #00D2FF 0%, #0099FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060B19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00D2FF;
+        }
+
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent-500 selection:text-white">
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 glass-nav py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2">
+                        <i class="fa-solid fa-code text-accent-500"></i>
+                        Nexora<span class="text-accent-500">.</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-sm font-medium text-slate-300 hover:text-accent-500 transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-sm font-medium text-slate-300 hover:text-accent-500 transition-colors">About Us</a>
+                    <a href="#services" class="nav-link text-sm font-medium text-slate-300 hover:text-accent-500 transition-colors">Services</a>
+                    <a href="#projects" class="nav-link text-sm font-medium text-slate-300 hover:text-accent-500 transition-colors">Projects</a>
+                    <a href="#team" class="nav-link text-sm font-medium text-slate-300 hover:text-accent-500 transition-colors">Team</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-accent-500 hover:bg-accent-600 text-white text-sm font-medium transition-all shadow-[0_0_15px_rgba(0,210,255,0.3)] hover:shadow-[0_0_25px_rgba(0,210,255,0.5)]">
+                        Let's Talk
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-b border-navy-700 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 text-center">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-accent-500 hover:bg-navy-800 rounded-md">Home</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-accent-500 hover:bg-navy-800 rounded-md">About Us</a>
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-accent-500 hover:bg-navy-800 rounded-md">Services</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-accent-500 hover:bg-navy-800 rounded-md">Projects</a>
+                <a href="#team" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-accent-500 hover:bg-navy-800 rounded-md">Team</a>
+                <a href="#contact" class="block mt-4 mx-4 px-5 py-3 rounded-full bg-accent-500 text-white font-medium">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center min-h-screen">
+        <!-- Background Decorative Elements -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                
+                <!-- Hero Text -->
+                <div class="text-center lg:text-left reveal">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-800 border border-navy-700 text-accent-500 text-sm font-medium mb-6">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-500 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
+                        </span>
+                        We Are Nexora Digital
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
+                        Transforming Ideas Into <br class="hidden md:block">
+                        <span class="text-gradient">Powerful Digital Experiences.</span>
+                    </h1>
+                    <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+                        Kami membantu bisnis dan individu membangun kehadiran digital melalui website modern, profesional, responsif, dan dirancang khusus sesuai kebutuhan operasional Anda.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#services" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-semibold transition-all text-center shadow-[0_0_20px_rgba(0,210,255,0.4)]">
+                            Explore Our Services
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-navy-800 hover:bg-navy-700 border border-navy-700 text-white font-semibold transition-all text-center">
+                            Start a Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="relative reveal delay-200 hidden md:block">
+                    <!-- Dashboard Mockup Placeholder -->
+                    <div class="relative z-10 bg-navy-800 rounded-xl border border-navy-700 shadow-2xl p-2 animate-float">
+                        <div class="bg-navy-900 rounded-lg overflow-hidden flex flex-col h-[350px]">
+                            <!-- Mockup Header -->
+                            <div class="h-8 bg-navy-800 border-b border-navy-700 flex items-center px-4 gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <!-- Mockup Body -->
+                            <div class="flex-1 p-4 flex gap-4">
+                                <div class="w-1/4 bg-navy-800 rounded flex flex-col gap-2 p-2">
+                                    <div class="w-full h-4 bg-navy-700 rounded mb-4"></div>
+                                    <div class="w-full h-3 bg-navy-700 rounded"></div>
+                                    <div class="w-full h-3 bg-navy-700 rounded"></div>
+                                    <div class="w-full h-3 bg-navy-700 rounded"></div>
+                                </div>
+                                <div class="w-3/4 flex flex-col gap-4">
+                                    <div class="w-full h-24 bg-gradient-to-r from-accent-500/20 to-blue-600/20 rounded border border-accent-500/30"></div>
+                                    <div class="flex gap-4">
+                                        <div class="flex-1 h-32 bg-navy-800 rounded"></div>
+                                        <div class="flex-1 h-32 bg-navy-800 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-accent-500/20 rounded-full blur-2xl z-0"></div>
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-blue-600/20 rounded-full blur-2xl z-0"></div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="py-24 bg-navy-900 border-t border-navy-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal">
+                    <img src="img/TeamColab.jpg" alt="About Nexora" class="rounded-2xl border border-navy-700 shadow-2xl grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute -bottom-8 -right-8 glass-card p-6 rounded-xl hidden md:block">
+                        <p class="text-4xl font-bold text-accent-500 mb-1"><i class="fa-solid fa-rocket"></i></p>
+                        <p class="text-sm text-slate-300 font-medium">Committed to<br>Excellence</p>
+                    </div>
+                </div>
+                
+                <div class="reveal delay-100">
+                    <h4 class="text-accent-500 font-semibold mb-2 uppercase tracking-wider text-sm">Who We Are</h4>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Membangun Identitas Digital yang Profesional</h2>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        Kami merupakan tim pengembang website yang berfokus pada pengembangan solusi digital melalui desain dan teknologi web modern. Kami berkomitmen membantu bisnis, organisasi, maupun individu membangun identitas digital yang profesional melalui website yang responsif dan fungsional.
+                    </p>
+                    
+                    <div class="space-y-6 mt-8">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-navy-800 border border-navy-700 flex items-center justify-center text-accent-500 shrink-0">
+                                <i class="fa-solid fa-eye text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Our Vision</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">Menjadi mitra teknologi terpercaya yang menghasilkan produk digital berkualitas tinggi untuk mendorong pertumbuhan bisnis di era modern.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-navy-800 border border-navy-700 flex items-center justify-center text-accent-500 shrink-0">
+                                <i class="fa-solid fa-bullseye text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Our Mission</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">Memberikan layanan pengembangan website yang berorientasi pada hasil, desain intuitif, performa optimal, dan dukungan jangka panjang.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR SERVICES SECTION -->
+    <section id="services" class="py-24 bg-navy-900 relative">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-navy-700 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h4 class="text-accent-500 font-semibold mb-2 uppercase tracking-wider text-sm">Our Services</h4>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Solusi Digital Komprehensif</h2>
+                <p class="text-slate-400">Kami menawarkan berbagai layanan pengembangan website yang dirancang khusus untuk memenuhi kebutuhan unik bisnis Anda.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-2xl reveal">
+                    <div class="w-14 h-14 rounded-xl bg-accent-500/10 flex items-center justify-center text-accent-500 mb-6 text-2xl">
+                        <i class="fa-regular fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Company Profile</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Website profesional untuk memperkenalkan identitas, portofolio, dan kredibilitas perusahaan Anda kepada dunia.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-2xl reveal delay-100">
+                    <div class="w-14 h-14 rounded-xl bg-accent-500/10 flex items-center justify-center text-accent-500 mb-6 text-2xl">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">E-Commerce Website</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Website toko online dengan fitur katalog produk komprehensif, keranjang belanja, dan sistem pemesanan.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-2xl reveal delay-200">
+                    <div class="w-14 h-14 rounded-xl bg-accent-500/10 flex items-center justify-center text-accent-500 mb-6 text-2xl">
+                        <i class="fa-solid fa-pager"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Landing Page</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Halaman website tunggal yang dirancang khusus untuk mengoptimalkan konversi pada kampanye promosi dan pemasaran.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card p-8 rounded-2xl reveal">
+                    <div class="w-14 h-14 rounded-xl bg-accent-500/10 flex items-center justify-center text-accent-500 mb-6 text-2xl">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Custom Web Dev</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Pengembangan sistem informasi atau website dengan fitur khusus yang disesuaikan dengan alur proses bisnis klien.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-card p-8 rounded-2xl reveal delay-100">
+                    <div class="w-14 h-14 rounded-xl bg-accent-500/10 flex items-center justify-center text-accent-500 mb-6 text-2xl">
+                        <i class="fa-solid fa-object-group"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">UI/UX Design</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Perancangan antarmuka (UI) yang estetis dan pengalaman pengguna (UX) yang intuitif untuk kepuasan pengunjung.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-card p-8 rounded-2xl reveal delay-200">
+                    <div class="w-14 h-14 rounded-xl bg-accent-500/10 flex items-center justify-center text-accent-500 mb-6 text-2xl">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Web Maintenance</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Layanan pemeliharaan rutin, pembaruan keamanan, optimasi server, dan perbaikan teknis website secara berkala.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section id="why-us" class="py-24 bg-navy-800 border-y border-navy-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h4 class="text-accent-500 font-semibold mb-2 uppercase tracking-wider text-sm">Why Choose Us</h4>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Keunggulan Layanan Kami</h2>
+                    <p class="text-slate-400 mb-8">Kami tidak hanya membuat website, tetapi merancang ekosistem digital yang berfungsi optimal untuk membantu Anda mencapai target yang diinginkan.</p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <i class="fa-solid fa-check-circle text-accent-500 text-xl"></i>
+                            <h4 class="text-white font-semibold">Modern Design</h4>
+                            <p class="text-slate-400 text-xs">Tampilan terkini mengikuti tren desain UI/UX.</p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <i class="fa-solid fa-mobile-screen text-accent-500 text-xl"></i>
+                            <h4 class="text-white font-semibold">Fully Responsive</h4>
+                            <p class="text-slate-400 text-xs">Tampil sempurna di desktop, tablet, maupun mobile.</p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <i class="fa-solid fa-bolt text-accent-500 text-xl"></i>
+                            <h4 class="text-white font-semibold">Optimized Performance</h4>
+                            <p class="text-slate-400 text-xs">Waktu muat cepat dengan kode yang efisien.</p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <i class="fa-solid fa-headset text-accent-500 text-xl"></i>
+                            <h4 class="text-white font-semibold">Reliable Support</h4>
+                            <p class="text-slate-400 text-xs">Tim selalu siap membantu pasca peluncuran.</p>
+                        </div>
+                    </div>
+                </div>
+                
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK PROCESS SECTION -->
+    <section id="process" class="py-24 bg-navy-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h4 class="text-accent-500 font-semibold mb-2 uppercase tracking-wider text-sm">How We Work</h4>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Proses Kerja Terstruktur</h2>
+                <p class="text-slate-400">Pendekatan sistematis kami untuk memastikan setiap proyek selesai dengan kualitas terbaik dan tepat waktu.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-navy-700 -translate-y-1/2 z-0"></div>
+                
+                <div class="grid md:grid-cols-5 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="bg-navy-800 md:bg-transparent p-6 md:p-0 rounded-xl md:rounded-none border md:border-none border-navy-700 text-center reveal">
+                        <div class="w-12 h-12 mx-auto bg-accent-500 rounded-full flex items-center justify-center text-white font-bold text-lg mb-4 shadow-[0_0_15px_rgba(0,210,255,0.4)] relative">
+                            1
+                        </div>
+                        <h4 class="text-white font-bold mb-2">Consultation</h4>
+                        <p class="text-slate-400 text-xs">Memahami kebutuhan dan tujuan bisnis klien.</p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="bg-navy-800 md:bg-transparent p-6 md:p-0 rounded-xl md:rounded-none border md:border-none border-navy-700 text-center reveal delay-100">
+                        <div class="w-12 h-12 mx-auto bg-navy-800 border-2 border-accent-500 rounded-full flex items-center justify-center text-accent-500 font-bold text-lg mb-4 relative">
+                            2
+                        </div>
+                        <h4 class="text-white font-bold mb-2">Planning & UI/UX</h4>
+                        <p class="text-slate-400 text-xs">Menyusun struktur dan merancang antarmuka visual.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-navy-800 md:bg-transparent p-6 md:p-0 rounded-xl md:rounded-none border md:border-none border-navy-700 text-center reveal delay-200">
+                        <div class="w-12 h-12 mx-auto bg-navy-800 border-2 border-accent-500 rounded-full flex items-center justify-center text-accent-500 font-bold text-lg mb-4 relative">
+                            3
+                        </div>
+                        <h4 class="text-white font-bold mb-2">Development</h4>
+                        <p class="text-slate-400 text-xs">Proses coding mengubah desain menjadi website fungsional.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="bg-navy-800 md:bg-transparent p-6 md:p-0 rounded-xl md:rounded-none border md:border-none border-navy-700 text-center reveal delay-300">
+                        <div class="w-12 h-12 mx-auto bg-navy-800 border-2 border-accent-500 rounded-full flex items-center justify-center text-accent-500 font-bold text-lg mb-4 relative">
+                            4
+                        </div>
+                        <h4 class="text-white font-bold mb-2">Testing</h4>
+                        <p class="text-slate-400 text-xs">Memastikan fitur berjalan lancar bebas bug.</p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="bg-navy-800 md:bg-transparent p-6 md:p-0 rounded-xl md:rounded-none border md:border-none border-navy-700 text-center reveal delay-400">
+                        <div class="w-12 h-12 mx-auto bg-navy-800 border-2 border-accent-500 rounded-full flex items-center justify-center text-accent-500 font-bold text-lg mb-4 relative">
+                            5
+                        </div>
+                        <h4 class="text-white font-bold mb-2">Launching</h4>
+                        <p class="text-slate-400 text-xs">Publikasi website dan serah terima ke klien.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR PROJECTS SECTION -->
+    <section id="projects" class="py-24 bg-navy-800 border-y border-navy-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div class="max-w-2xl">
+                    <h4 class="text-accent-500 font-semibold mb-2 uppercase tracking-wider text-sm">Our Works</h4>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Galeri Proyek Kami</h2>
+                    <p class="text-slate-400">Jelajahi beberapa hasil desain dan pengembangan konsep website yang kami kerjakan.</p>
+                </div>
+                <div class="mt-6 md:mt-0">
+                    <a href="#" class="text-accent-500 hover:text-white font-medium flex items-center gap-2 transition-colors">
+                        View All Projects <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group rounded-2xl overflow-hidden bg-navy-900 border border-navy-700 hover:border-accent-500/50 transition-all reveal cursor-pointer">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="./img/gambar1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Project 1">
+                        <div class="absolute inset-0 bg-navy-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="px-6 py-2 bg-accent-500 text-white rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View Details</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-accent-500 bg-accent-500/10 px-2 py-1 rounded mb-3 inline-block">Sistem Reservasi Fotografi</span>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent-500 transition-colors">Memoli Portrait</h3>
+                        <p class="text-slate-400 text-sm">Konsep website profil perusahaan Studio Fotografi dengan desain profesional.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group rounded-2xl overflow-hidden bg-navy-900 border border-navy-700 hover:border-accent-500/50 transition-all reveal delay-100 cursor-pointer">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="./img/gambar2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Project 2">
+                        <div class="absolute inset-0 bg-navy-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="px-6 py-2 bg-accent-500 text-white rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View Details</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-accent-500 bg-accent-500/10 px-2 py-1 rounded mb-3 inline-block">Layanan Manajemen</span>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent-500 transition-colors">Bolakita</h3>
+                        <p class="text-slate-400 text-sm">Sistem Manajemen Sekolah Sepak Bola</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group rounded-2xl overflow-hidden bg-navy-900 border border-navy-700 hover:border-accent-500/50 transition-all reveal delay-200 cursor-pointer">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="./img/gambar3.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Project 3">
+                        <div class="absolute inset-0 bg-navy-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="px-6 py-2 bg-accent-500 text-white rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View Details</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-accent-500 bg-accent-500/10 px-2 py-1 rounded mb-3 inline-block">Portfolio</span>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent-500 transition-colors">Self Portfolio</h3>
+                        <p class="text-slate-400 text-sm">Landing Page Portfolio Dengan Tampilan Modern Dan Professional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR TEAM SECTION -->
+    <section id="team" class="py-24 bg-navy-900 relative">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-navy-700 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h4 class="text-accent-500 font-semibold mb-2 uppercase tracking-wider text-sm">Meet The Team</h4>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">The People Behind Every Digital Experience</h2>
+                <p class="text-slate-400">Tim pengembang berdedikasi yang siap mengubah ide brilian Anda menjadi realitas digital.</p>
+            </div>
+
+            <!-- Team Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Member 1 -->
+                <div class="glass-card rounded-2xl p-6 text-center group reveal">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-navy-700 group-hover:border-accent-500 transition-colors">
+                        <img src="./img/fajar.jpeg" alt="Muhammad Fajar Hidayat" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent-500 transition-colors">Muhammad Fajar Hidayat</h3>
+                    <p class="text-sm text-slate-400 mb-4">Web Development Team</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-github text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="glass-card rounded-2xl p-6 text-center group reveal delay-100">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-navy-700 group-hover:border-accent-500 transition-colors">
+                        <img src="./img/irfan.jpeg" alt="Irfan Ramadhan" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent-500 transition-colors">Irfan Ramadhan</h3>
+                    <p class="text-sm text-slate-400 mb-4">Web Development Team</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-github text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="glass-card rounded-2xl p-6 text-center group reveal delay-200">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-navy-700 group-hover:border-accent-500 transition-colors">
+                        <img src="./img/ibnu.jpeg" alt="Ibnu Mubarok" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent-500 transition-colors">Ibnu Mubarok</h3>
+                    <p class="text-sm text-slate-400 mb-4">Web Development Team</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-github text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="glass-card rounded-2xl p-6 text-center group reveal">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-navy-700 group-hover:border-accent-500 transition-colors">
+                        <img src="./img/bejo.jpeg" alt="Fadilah Roichan Khabib" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent-500 transition-colors">Fadilah Roichan Khabib</h3>
+                    <p class="text-sm text-slate-400 mb-4">Web Development Team</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-github text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 5 -->
+                <div class="glass-card rounded-2xl p-6 text-center group reveal delay-100">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-navy-700 group-hover:border-accent-500 transition-colors">
+                        <img src="./img/fachry.png" alt="Fachry Nur Ikhlas" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent-500 transition-colors">Fachry Nur Ikhlas</h3>
+                    <p class="text-sm text-slate-400 mb-4">Web Development Team</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-github text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 6 -->
+                <div class="glass-card rounded-2xl p-6 text-center group reveal delay-200">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-navy-700 group-hover:border-accent-500 transition-colors">
+                        <img src="./img/alam.jpeg" alt="Alamsyah Nur Ramadhan" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent-500 transition-colors">Alamsyah Nur Ramadhan</h3>
+                    <p class="text-sm text-slate-400 mb-4">Web Development Team</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-github text-sm"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL (Placeholder Empty State) -->
+    <section id="testimonials" class="py-24 bg-navy-800 border-y border-navy-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h4 class="text-accent-500 font-semibold mb-2 uppercase tracking-wider text-sm">Client Reviews</h4>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">Apa Kata Mereka?</h2>
+            
+            <div class="max-w-2xl mx-auto bg-navy-900 border border-navy-700 border-dashed rounded-2xl p-12">
+                <div class="w-16 h-16 mx-auto bg-navy-800 rounded-full flex items-center justify-center text-slate-500 mb-4">
+                    <i class="fa-regular fa-comment-dots text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-medium text-white mb-2">Belum ada ulasan</h3>
+                <p class="text-slate-400 text-sm">Jadilah klien pertama kami dan berikan ulasan tentang layanan pengembangan website kami di sini.</p>
+                <a href="#contact" class="inline-block mt-6 px-6 py-2 rounded-full border border-accent-500 text-accent-500 hover:bg-accent-500 hover:text-white transition-colors text-sm font-medium">Mulai Proyek Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-24 bg-navy-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h4 class="text-accent-500 font-semibold mb-2 uppercase tracking-wider text-sm">FAQ</h4>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <!-- FAQ Item 1 -->
+                <div class="border border-navy-700 rounded-xl bg-navy-800/50 overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none faq-btn">
+                        <span class="font-medium text-white">Berapa biaya pembuatan website?</span>
+                        <i class="fa-solid fa-chevron-down text-accent-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-navy-900/30 px-6">
+                        <p class="text-slate-400 text-sm pb-4">Biaya pembuatan website sangat bervariasi bergantung pada tingkat kompleksitas, fitur yang dibutuhkan, dan jenis website (Company Profile, E-Commerce, Custom). Kami menyarankan untuk melakukan konsultasi gratis agar kami dapat memberikan estimasi harga yang tepat sesuai spesifikasi Anda.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-navy-700 rounded-xl bg-navy-800/50 overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none faq-btn">
+                        <span class="font-medium text-white">Berapa lama proses pengerjaan website?</span>
+                        <i class="fa-solid fa-chevron-down text-accent-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-navy-900/30 px-6">
+                        <p class="text-slate-400 text-sm pb-4">Waktu pengerjaan bergantung pada cakupan proyek. Untuk landing page atau company profile standar, biasanya memakan waktu 1-3 minggu. Sedangkan untuk E-Commerce atau Custom System bisa memakan waktu 1-3 bulan. Timeline pasti akan diberikan setelah tahap perencanaan selesai.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-navy-700 rounded-xl bg-navy-800/50 overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none faq-btn">
+                        <span class="font-medium text-white">Apakah website bisa disesuaikan dengan kebutuhan bisnis?</span>
+                        <i class="fa-solid fa-chevron-down text-accent-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-navy-900/30 px-6">
+                        <p class="text-slate-400 text-sm pb-4">Tentu saja. Kami menawarkan layanan Custom Web Development di mana fitur, alur kerja, dan desain antarmuka sepenuhnya dirancang secara khusus untuk memenuhi proses bisnis unik perusahaan Anda.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-navy-700 rounded-xl bg-navy-800/50 overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none faq-btn">
+                        <span class="font-medium text-white">Apakah website dapat dibuka melalui smartphone?</span>
+                        <i class="fa-solid fa-chevron-down text-accent-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-navy-900/30 px-6">
+                        <p class="text-slate-400 text-sm pb-4">Ya, seluruh website yang kami bangun dijamin memiliki desain responsif (Responsive Design), artinya tampilan akan otomatis menyesuaikan ukuran layar pengguna, baik itu Desktop, Tablet, maupun Smartphone.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="border border-navy-700 rounded-xl bg-navy-800/50 overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none faq-btn">
+                        <span class="font-medium text-white">Apakah tersedia layanan maintenance?</span>
+                        <i class="fa-solid fa-chevron-down text-accent-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-navy-900/30 px-6">
+                        <p class="text-slate-400 text-sm pb-4">Ya, kami menyediakan paket Website Maintenance pasca-peluncuran yang mencakup pembaruan keamanan, backup data rutin, optimasi server, dan perbaikan minor jika diperlukan.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="border border-navy-700 rounded-xl bg-navy-800/50 overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none faq-btn">
+                        <span class="font-medium text-white">Bagaimana cara memulai proyek?</span>
+                        <i class="fa-solid fa-chevron-down text-accent-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-navy-900/30 px-6">
+                        <p class="text-slate-400 text-sm pb-4">Anda cukup menghubungi kami melalui formulir kontak di bawah atau langsung melalui tombol WhatsApp. Tim kami akan merespons untuk mengatur jadwal diskusi awal guna memahami visi dan kebutuhan proyek Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT US SECTION -->
+    <section id="contact" class="py-24 bg-navy-800 border-t border-navy-700 relative">
+        <div class="absolute right-0 top-0 w-1/3 h-full bg-accent-500/5 blur-[150px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Let's Build Something <br> <span class="text-gradient">Great Together.</span></h2>
+                    <p class="text-slate-400 mb-10 text-lg">Have an idea for your next website? Let's discuss your project and turn your vision into reality. Hubungi kami untuk konsultasi gratis.</p>
+                    
+                    <div class="space-y-6 mb-10">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-navy-900 border border-navy-700 flex items-center justify-center text-accent-500 shrink-0">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">Email Us</h4>
+                                <a href="mailto:hello@nexora.example.com" class="text-slate-400 hover:text-accent-500 transition-colors">Jasaweb@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-navy-900 border border-navy-700 flex items-center justify-center text-accent-500 shrink-0">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">WhatsApp</h4>
+                                <a href="https://wa.me/6281234567890" target="_blank" class="text-slate-400 hover:text-accent-500 transition-colors">+62 812-3456-7890</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-navy-900 border border-navy-700 flex items-center justify-center text-accent-500 shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">Location</h4>
+                                <p class="text-slate-400">Purwokerto, Indonesia </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="glass-card p-8 md:p-10 rounded-2xl reveal delay-100">
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="name" class="text-sm font-medium text-slate-300">Full Name</label>
+                                <input type="text" id="name" required class="w-full bg-navy-900 border border-navy-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-colors" placeholder="John Doe">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="email" class="text-sm font-medium text-slate-300">Email Address</label>
+                                <input type="email" id="email" required class="w-full bg-navy-900 border border-navy-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-colors" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <label for="service" class="text-sm font-medium text-slate-300">Service Needed</label>
+                            <select id="service" class="w-full bg-navy-900 border border-navy-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-colors appearance-none">
+                                <option value="">Select a service...</option>
+                                <option value="Company Profile">Company Profile Website</option>
+                                <option value="E-Commerce">E-Commerce Website</option>
+                                <option value="Landing Page">Landing Page</option>
+                                <option value="Custom Development">Custom Web Development</option>
+                                <option value="UI/UX Design">UI/UX Design</option>
+                                <option value="Maintenance">Website Maintenance</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="message" class="text-sm font-medium text-slate-300">Project Details</label>
+                            <textarea id="message" rows="4" required class="w-full bg-navy-900 border border-navy-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-colors" placeholder="Tell us about your project..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-accent-500 hover:bg-accent-600 text-white font-bold py-4 rounded-lg transition-all shadow-[0_0_15px_rgba(0,210,255,0.3)] hover:shadow-[0_0_25px_rgba(0,210,255,0.5)]">
+                            Send Message
+                        </button>
+                        
+                        <p id="formStatus" class="hidden text-center text-sm font-medium text-green-400 mt-4">Pesan Anda siap dikirimkan melalui WhatsApp!</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-900 pt-20 pb-10 border-t border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <a href="#" class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-code text-accent-500"></i>
+                        Nexora<span class="text-accent-500">.</span>
+                    </a>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Mitra strategis Anda dalam mengembangkan dan membangun ekosistem digital perusahaan melalui teknologi web modern.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-500 transition-all"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-slate-400 hover:text-accent-500 transition-colors text-sm">Home</a></li>
+                        <li><a href="#about" class="text-slate-400 hover:text-accent-500 transition-colors text-sm">About Us</a></li>
+                        <li><a href="#projects" class="text-slate-400 hover:text-accent-500 transition-colors text-sm">Our Works</a></li>
+                        <li><a href="#team" class="text-slate-400 hover:text-accent-500 transition-colors text-sm">The Team</a></li>
+                        <li><a href="#contact" class="text-slate-400 hover:text-accent-500 transition-colors text-sm">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-accent-500 transition-colors text-sm">Company Profile</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-accent-500 transition-colors text-sm">E-Commerce</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-accent-500 transition-colors text-sm">Landing Page</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-accent-500 transition-colors text-sm">Custom Web System</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-accent-500 transition-colors text-sm">Web Maintenance</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact Info</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-sm text-slate-400">
+                            <i class="fa-solid fa-location-dot mt-1 text-accent-500"></i>
+                            <span>Kawasan Layanan Bisnis,<br>Purwokerto, Indonesia</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-400">
+                            <i class="fa-solid fa-phone text-accent-500"></i>
+                            <span>+62 812-3456-7890</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-400">
+                            <i class="fa-solid fa-envelope text-accent-500"></i>
+                            <span>Jasaweb@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-navy-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-500 text-sm mb-4 md:mb-0">
+                    &copy; <span id="year"></span> Nexora Digital Agency. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-slate-500 hover:text-white text-sm transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-accent-500 text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50 hover:bg-accent-600 focus:outline-none">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Script for Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const mobileLinks = menu.querySelectorAll('a');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                const icon = btn.querySelector('i');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                }
+            });
+
+            // Close mobile menu on link click
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    btn.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+                });
+            });
+
+            // Navbar Sticky effect and Active Links
+            const navbar = document.getElementById('navbar');
+            const sections = document.querySelectorAll('section, header');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const backToTop = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                // Navbar styling on scroll
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-lg', 'bg-navy-900/90');
+                    navbar.classList.remove('py-4');
+                    navbar.classList.add('py-2');
+                } else {
+                    navbar.classList.remove('shadow-lg', 'bg-navy-900/90');
+                    navbar.classList.remove('py-2');
+                    navbar.classList.add('py-4');
+                }
+
+                // Back to top button visibility
+                if (window.scrollY > 500) {
+                    backToTop.classList.remove('translate-y-20', 'opacity-0');
+                } else {
+                    backToTop.classList.add('translate-y-20', 'opacity-0');
+                }
+
+                // Active nav link spy
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-accent-500');
+                    link.classList.add('text-slate-300');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('text-accent-500');
+                        link.classList.remove('text-slate-300');
+                    }
+                });
+            });
+
+            // Back to Top functionality
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Scroll Reveal Animation (Intersection Observer)
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            // FAQ Accordion
+            const faqBtns = document.querySelectorAll('.faq-btn');
+            faqBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Close others
+                    faqBtns.forEach(otherBtn => {
+                        if(otherBtn !== this) {
+                            otherBtn.nextElementSibling.style.maxHeight = null;
+                            otherBtn.nextElementSibling.style.paddingTop = '0';
+                            otherBtn.querySelector('i').style.transform = 'rotate(0deg)';
+                        }
+                    });
+
+                    // Toggle current
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        content.style.paddingTop = '0';
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 20 + "px"; // added extra space
+                        content.style.paddingTop = '1rem';
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+            // Contact Form Handle (Redirect to WhatsApp)
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const service = document.getElementById('service').value;
+                const message = document.getElementById('message').value;
+                const status = document.getElementById('formStatus');
+
+                // Basic validation fallback
+                if(!name || !message) return;
+
+                // Format WhatsApp message
+                const phone = "6281234567890"; // Ganti dengan nomor asli
+                let text = `Halo Nexora Digital, saya tertarik dengan layanan Anda.%0A%0A`;
+                text += `Nama: ${name}%0A`;
+                if(service) text += `Layanan: ${service}%0A`;
+                text += `Pesan: ${message}%0A`;
+
+                const waUrl = `https://wa.me/${phone}?text=${text}`;
+                
+                // Show status
+                status.classList.remove('hidden');
+                
+                // Redirect after brief delay
+                setTimeout(() => {
+                    window.open(waUrl, '_blank');
+                    contactForm.reset();
+                    status.classList.add('hidden');
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
